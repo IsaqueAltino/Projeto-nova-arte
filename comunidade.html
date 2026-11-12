@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#070d1d">
+    <meta name="description" content="Nova Arte — unindo arte física e digital com acessibilidade.">
+    <title>Comunidade | Nova Arte</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo-nova-arte.svg">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body data-page="social"><a class="skip" href="#main">Pular para conteúdo</a>
+    <header class="header">
+        <div class="container topbar"><a class="brand" href="index.html" aria-label="Nova Arte, página inicial"><img
+                    class="brand-logo" src="assets/logo-nova-arte.svg" alt="" width="43" height="43"><span>NOVA
+                    <strong>ARTE</strong></span></a><button class="menu-button" id="menuButton" aria-label="Abrir menu"
+                aria-expanded="false">☰</button>
+            <nav class="nav" id="nav"><a href="index.html" class="">O projeto</a><a href="index.html#como-funciona">Como
+                    funciona</a><a href="index.html#equipe">Equipe</a><a href="comunidade.html"
+                    class="active">Comunidade</a></nav><a class="button button-primary header-cta"
+                href="comunidade.html">Explorar artes <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+    <main id="main" class="social-main">
+        <div class="container social-layout">
+            <aside class="sidebar">
+                <div class="sidebar-title">SEU ESPAÇO CRIATIVO</div><a class="side-link active" href="#feed"
+                    data-view="feed">⌂ <span>Explorar</span></a><a class="side-link" href="#artistas"
+                    data-view="artists">♧ <span>Artistas</span></a><a class="side-link" href="#salvos"
+                    data-view="saved">♡ <span>Salvos</span></a><a class="side-link" href="#perfil" data-view="profile">◉
+                    <span>Meu perfil</span></a>
+                <div class="sidebar-divider"></div><button class="button button-primary sidebar-post" id="newPostSide">＋
+                    Publicar arte</button>
+                <div class="sidebar-bottom"><span class="sidebar-title">NOVA ARTE</span>
+                    <p>Uma comunidade criativa em demonstração.</p><a href="index.html">← Voltar ao projeto</a>
+                </div>
+            </aside>
+            <div class="social-content">
+                <div class="social-top">
+                    <div><span class="kicker">NOVA ARTE / COMUNIDADE</span>
+                        <h1 id="viewTitle">Descubra sua próxima <span class="blue">inspiração.</span></h1>
+                    </div>
+                    <div class="social-actions"><button class="button button-outline" id="accountButton">Entrar / Criar
+                            perfil</button><button class="button button-primary" id="newPostTop">＋ Publicar</button>
+                    </div>
+                </div>
+                <div id="feedView" class="view">
+                    <div class="search-row"><label class="searchbox"><span aria-hidden="true">⌕</span><input
+                                id="searchInput" type="search" placeholder="Buscar obras, artistas ou estilos..."
+                                aria-label="Buscar obras ou artistas"></label><select id="categoryFilter"
+                            aria-label="Filtrar categoria">
+                            <option value="all">Todas as categorias</option>
+                            <option>Pintura</option>
+                            <option>Desenho</option>
+                            <option>Fotografia</option>
+                            <option>Arte digital</option>
+                            <option>Escultura</option>
+                        </select></div>
+                    <div class="chips" id="chips"><button class="chip active" data-category="all">Tudo</button><button
+                            class="chip" data-category="Pintura">Pintura</button><button class="chip"
+                            data-category="Arte digital">Arte digital</button><button class="chip"
+                            data-category="Fotografia">Fotografia</button><button class="chip"
+                            data-category="Desenho">Desenho</button><button class="chip"
+                            data-category="Escultura">Escultura</button></div>
+                    <div class="masonry" id="feedGrid"></div>
+                    <p class="empty" id="feedEmpty" hidden>Nenhuma obra encontrada. Tente outro filtro.</p>
+                </div>
+                <div id="artistsView" class="view" hidden>
+                    <p class="view-description">Explore os perfis dos criadores da comunidade.</p>
+                    <div class="artists-grid" id="artistsGrid"></div>
+                </div>
+                <div id="savedView" class="view" hidden>
+                    <p class="view-description">As obras que você curtir aparecem aqui neste navegador.</p>
+                    <div class="masonry" id="savedGrid"></div>
+                    <p class="empty" id="savedEmpty" hidden>Você ainda não salvou nenhuma obra.</p>
+                </div>
+                <div id="profileView" class="view" hidden>
+                    <div id="profilePanel"></div>
+                    <div class="masonry" id="profileGrid"></div>
+                </div>
+                <div id="artistDetailView" class="view" hidden><button class="text-button" id="backArtists">← Voltar aos
+                        artistas</button>
+                    <div id="artistDetail"></div>
+                    <div class="masonry" id="artistDetailGrid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <dialog id="accountDialog" class="dialog">
+        <form id="accountForm" class="dialog-form"><button type="button" class="close-dialog" data-close
+                aria-label="Fechar">×</button><span class="kicker">SUA IDENTIDADE CRIATIVA</span>
+            <h2>Criar ou acessar perfil</h2>
+            <p>Esta é uma simulação local. Escolha um nome para entrar; não utilize senhas reais.</p><label>Nome de
+                artista<input name="name" required maxlength="40"
+                    placeholder="Como quer ser conhecido?"></label><label>Biografia (opcional)<textarea name="bio"
+                    maxlength="180" rows="3" placeholder="Conte um pouco sobre sua arte..."></textarea></label><button
+                class="button button-primary" type="submit">Continuar ↗</button>
+        </form>
+    </dialog>
+    <dialog id="postDialog" class="dialog">
+        <form id="postForm" class="dialog-form"><button type="button" class="close-dialog" data-close
+                aria-label="Fechar">×</button><span class="kicker">COMPARTILHE SUA CRIATIVIDADE</span>
+            <h2>Publicar uma obra</h2>
+            <p>Publicações demonstrativas ficam armazenadas apenas neste navegador.</p><label>Imagem da arte<input
+                    id="postImage" name="image" type="file" accept="image/png,image/jpeg,image/webp" required></label>
+            <div id="imagePreview" class="image-preview" hidden></div><label>Título<input name="title" required
+                    maxlength="70" placeholder="Nome da sua obra"></label><label>Categoria<select name="category">
+                    <option>Arte digital</option>
+                    <option>Pintura</option>
+                    <option>Desenho</option>
+                    <option>Fotografia</option>
+                    <option>Escultura</option>
+                </select></label><label>Descrição<textarea name="description" rows="3" maxlength="300"
+                    placeholder="Qual é a história desta obra?"></textarea></label><button class="button button-primary"
+                type="submit">Publicar arte ↗</button>
+        </form>
+    </dialog>
+    <dialog id="artDialog" class="dialog art-dialog"><button type="button" class="close-dialog" data-close
+            aria-label="Fechar">×</button>
+        <div id="artDetail"></div>
+    </dialog>
+    <footer class="footer">
+        <div class="container footer-inner"><span class="brand small-brand"><img class="brand-logo"
+                    src="assets/logo-nova-arte.svg" alt="" width="43" height="43"> NOVA
+                <strong>ARTE</strong></span><span>TCC • Arte física, digital e acessibilidade</span><span>Projeto
+                demonstrativo • 2026</span></div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+
+</html>
